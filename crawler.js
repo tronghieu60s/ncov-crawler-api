@@ -40,8 +40,8 @@ function world() {
                 let cases = $(data[0]).text().trim();
                 let deaths = $(data[1]).text().trim();
                 let recovered = $(data[2]).text().trim();
-                let world = { cases, deaths, recovered };
-                covid19Model.findOneAndUpdate({ success: true }, { world }, (err) => {
+                let global = { cases, deaths, recovered };
+                covid19Model.findOneAndUpdate({ success: true }, { global }, (err) => {
                     if (err) console.log(err);
                 })
             }
