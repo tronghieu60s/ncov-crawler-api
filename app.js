@@ -20,6 +20,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/myproject', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+});
+let covid19Model = require('./models/covid19');
+covid19Model.findOne({success: true}, (err, covid19)=>{
+  if(!covid19) covid19Model.create({success: true}, ()=>{});
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
