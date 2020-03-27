@@ -19,9 +19,11 @@ function vietnam() {
                 let recovered = $("span > span[style='font-size:28px;']").text();
                 let tableCases = $("div[style='height:530px;overflow-y: auto;border: 1px dotted #666;padding: 5px;']").text();
                 let vietnam = { cases, deaths, recovered, tableCases };
-                covid19Model.findOneAndUpdate({ success: true }, { vietnam }, (err) => {
-                    if (err) console.log(err);
-                })
+                if (cases !== "") {
+                    covid19Model.findOneAndUpdate({ success: true }, { vietnam }, (err) => {
+                        if (err) console.log(err);
+                    })
+                }
             }
             done();
         }
@@ -41,9 +43,11 @@ function world() {
                 let deaths = $(data[1]).text().trim();
                 let recovered = $(data[2]).text().trim();
                 let global = { cases, deaths, recovered };
-                covid19Model.findOneAndUpdate({ success: true }, { global }, (err) => {
-                    if (err) console.log(err);
-                })
+                if (cases !== "") {
+                    covid19Model.findOneAndUpdate({ success: true }, { global }, (err) => {
+                        if (err) console.log(err);
+                    })
+                }
             }
             done();
         }
