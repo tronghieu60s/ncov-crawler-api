@@ -14,8 +14,8 @@ router.get('/', function (req, res, next) {
 router.get('/api', function (req, res, next) {
   covid19Model.findOne({ success: true }, function (err, covid19) {
     if (covid19) {
-      let { vietnam, global } = covid19;
-      let data = { vietnam, global };
+      let { vietnam, global, countries } = covid19;
+      let data = { vietnam, global, countries };
       res.send({ success: true, data });
     }
   })
