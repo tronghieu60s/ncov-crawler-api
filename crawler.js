@@ -14,11 +14,10 @@ function vietnam() {
                 console.log(error);
             } else {
                 var $ = res.$;
-                let cases = $("p > span[class='font24 text-danger2']").text();
-                let deaths = $("span[style='font-size:20px;'] > span[style='color:#FF0000;']").text().trim();
-                let recovered = $("span > span[style='font-size:28px;']").text();
-                let tableCases = $("div[style='height:530px;overflow-y: auto;border: 1px dotted #666;padding: 5px;']").text();
-                let vietnam = { cases, deaths, recovered, tableCases };
+                let cases = $(".box-tke .fivecolumns:nth-child(1) div:nth-child(2) span").text();
+                let deaths = $(".box-tke .fivecolumns:nth-child(1) div:nth-child(5) span").text();
+                let recovered = $(".box-tke .fivecolumns:nth-child(1) div:nth-child(4) span").text();
+                let vietnam = { cases, deaths, recovered };
                 if (cases !== "") {
                     covid19Model.findOneAndUpdate({ success: true }, { vietnam }, (err) => {
                         if (err) console.log(err);
@@ -42,6 +41,7 @@ function world() {
                 let cases = $(data[0]).text().trim();
                 let deaths = $(data[1]).text().trim();
                 let recovered = $(data[2]).text().trim();
+                let global = { cases, deaths, recovered };
 
                 let countries = [];
                 let countryNumber = 5;
@@ -53,7 +53,6 @@ function world() {
                     countries.push(country);
                 }
 
-                let global = { cases, deaths, recovered };
                 if (cases !== "") {
                     covid19Model.findOneAndUpdate({ success: true }, { global, countries }, (err) => {
                         if (err) console.log(err);
