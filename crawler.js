@@ -43,18 +43,8 @@ function world() {
                 let recovered = $(data[2]).text().trim();
                 let global = { cases, deaths, recovered };
 
-                let countries = [];
-                let countryNumber = 5;
-                for (let i = 1; i <= countryNumber; i++) {
-                    let c_name = $(`#main_table_countries_today tbody:nth-child(even) tr:nth-child(${i}) td:nth-child(1)`).text();
-                    let c_cases = $(`#main_table_countries_today tbody:nth-child(even) tr:nth-child(${i}) td:nth-child(2)`).text();
-                    let c_deaths = $(`#main_table_countries_today tbody:nth-child(even) tr:nth-child(${i}) td:nth-child(4)`).text();
-                    let country = {c_name, c_cases, c_deaths}
-                    countries.push(country);
-                }
-
                 if (cases !== "") {
-                    covid19Model.findOneAndUpdate({ success: true }, { global, countries }, (err) => {
+                    covid19Model.findOneAndUpdate({ success: true }, { global }, (err) => {
                         if (err) console.log(err);
                     })
                 }
