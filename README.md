@@ -1,7 +1,6 @@
 # ncov-crawler-api
 
 API Data Viruss Covid-2019 (VietNam and Global).
-https://ncov.moh.gov.vn/
 https://www.worldometers.info/coronavirus/
 
 
