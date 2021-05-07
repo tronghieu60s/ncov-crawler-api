@@ -15,7 +15,7 @@ ncov-crawler-api requires [Node.js](https://nodejs.org/) v4+ to run.
 Install the dependencies and run start server.
 
 ```sh
-$ cd ncov-chatbot
+$ cd ncov-crawler-api
 $ npm install
 $ npm start
 ```
